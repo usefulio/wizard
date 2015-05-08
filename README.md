@@ -147,6 +147,10 @@ Boolean of whether the wizard is currently displaying the last step.
 
 Returns the number of steps the wizard currently contains.
 
+### `{{percentComplete}}`
+
+Returns the percentage (0 - 100) "complete" the wizard is, e.g. step 2 out of 5 is will return `40`.
+
 ### `{{steps}}`
 
 This is an array containing the details of your steps.

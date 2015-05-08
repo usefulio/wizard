@@ -17,12 +17,13 @@ Wizard.mixin = function(template){
 	template.onCreated(function(){
 		var self = this;
 
-		this.steps 			= new ReactiveVar([]);
-		this.currentIndex 	= new ReactiveVar(0);
+		this.steps 				= new ReactiveVar([]);
+		this.currentIndex 		= new ReactiveVar(0);
+		this.percentComplete 	= new ReactiveVar(0);
 
-		this.activeClass	= 'wizard-active';
-		this.inactiveClass	= 'wizard-inactive';
-		this.completedClass	= 'wizard-complete';
+		this.activeClass		= 'wizard-active';
+		this.inactiveClass		= 'wizard-inactive';
+		this.completedClass		= 'wizard-complete';
 
 		this.setClassForIndex = function(currentIndex, targetIndex, $el){
 			if(targetIndex === currentIndex){
@@ -86,6 +87,7 @@ Wizard.mixin = function(template){
 				function move(err){
 					if(_.isUndefined(err)){
 						self.currentIndex.set(targetIndex);
+						self.percentComplete.set( (targetIndex / steps.length) * 100 );
 						self.setClasses();
 					}
 				}
@@ -175,6 +177,9 @@ Wizard.mixin = function(template){
 		}
 		, isLastStep: function () {
 			return Template.instance().currentIndex.get() === Template.instance().steps.get().length - 1;
+		}
+		, percentComplete: function () {
+			return Template.instance().percentComplete.get();
 		}
 	});
 };

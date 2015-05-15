@@ -30,6 +30,7 @@ Wizard.mixin(Template.NewOrder);
 other code
 ```
 
+**More examples are in the `/examples` folder**
 
 # Installation
 

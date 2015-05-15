@@ -1,0 +1,48 @@
+<head>
+	<title>autowizard</title>
+</head>
+
+<body>
+	{{> BookList}}
+	{{> AddBookWizard}}
+</body>
+
+<template name="AddBookWizard">
+	<h4>Add a Book</h4>
+	<div class="wizard">
+		{{#autoForm collection="Books" id="insertBookForm" type="insert"}}
+			<div class="wizard-steps">
+				<div class="transition-top">
+					{{> afQuickField name='title'}}
+					<button type="button" class="next waves-effect waves-light btn">Next</button>
+				</div>
+				<div class="transition-right">
+					{{> afQuickField name='author'}}
+					<button type="button" class="next waves-effect waves-light btn">Next</button>
+				</div>
+				<div class="transition-right">
+					{{> afQuickField name='summary' rows=6}}
+					<button type="button" class="next waves-effect waves-light btn">Next</button>
+				</div>
+				<div class="transition-right">
+					{{> afQuickField name='copies'}}
+					<button type="submit" class="btn waves-effect waves-light btn">Insert</button>
+				</div>
+			</div>
+		{{/autoForm}}
+		<ul class="wizard-indicators">
+			{{#each steps}}
+				<li></li>
+			{{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="BookList">
+	<h4>Book List</h4>
+	<ul>
+		{{#each books}}
+			<li>{{title}} {{author}}</li>
+		{{/each}}
+	</ul>
+</template>

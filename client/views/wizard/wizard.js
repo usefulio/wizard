@@ -1,16 +1,3 @@
-// define transition
-
-// Templates for indicators
-// templates for buttons
-
-// callbacks for allowing move to a step
-
-// define each step
-
-// dynamically add/remove a step
-
-// events for moving forward/back
-
 Wizard = {};
 
 Wizard.mixin = function(template){

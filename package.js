@@ -1,6 +1,6 @@
 Package.describe({
 	name: 'useful:wizard',
-	version: '0.0.2',
+	version: '0.0.3',
 	summary: 'Wizard Template Mixin',
 	git: 'https://github.com/usefulio/wizard',
 	documentation: 'README.md'

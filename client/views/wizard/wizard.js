@@ -112,6 +112,14 @@ Wizard.mixin = function(template){
 				self.setClasses();
 			}
 		};
+
+		this.isLastStep = function(){
+			return self.currentIndex.get() === self.steps.get().length - 1;
+		};
+
+		this.isFirstStep = function(){
+			return self.currentIndex.get() === 0;
+		}
 	});
 
 	template.onRendered(function(){
@@ -160,10 +168,10 @@ Wizard.mixin = function(template){
 			return Template.instance().currentIndex.get();
 		}
 		, isFirstStep: function () {
-			return Template.instance().currentIndex.get() === 0;
+			return Template.instance().isFirstStep();
 		}
 		, isLastStep: function () {
-			return Template.instance().currentIndex.get() === Template.instance().steps.get().length - 1;
+			return Template.instance().isLastStep();
 		}
 		, percentComplete: function () {
 			return Template.instance().percentComplete.get();

@@ -47,19 +47,24 @@ Wizard.mixin = function(template){
 		};
 
 		this.setClasses = function(){
-			var classSet = self.activeClass + " " + self.completedClass + " " + self.inactiveClass
-				, currentIndex = self.currentIndex.get();
-			
-			self.$('.wizard-steps >*').each(function(elementIndex, el){
-				self.setClassForIndex(currentIndex, elementIndex, $(el));
-			});
+			if(self.view && self.view.isRendered){
+				var classSet = self.activeClass + " " + self.completedClass + " " + self.inactiveClass
+					, currentIndex = self.currentIndex.get();
+				
+				self.$('.wizard-steps >*').each(function(elementIndex, el){
+					self.setClassForIndex(currentIndex, elementIndex, $(el));
+				});
 
-			self.$('.wizard-indicators >*').each(function(elementIndex, el){
-				self.setClassForIndex(currentIndex, elementIndex, $(el));
-			});
+				self.$('.wizard-indicators >*').each(function(elementIndex, el){
+					self.setClassForIndex(currentIndex, elementIndex, $(el));
+				});
+			}
 		};
 
 		this.moveToIndex = function(targetIndex){
+			if(!this.view || !this.view.isRendered){
+				this.currentIndex.set(targetIndex);
+			}
 			var currentIndex = this.currentIndex.get()
 				, steps = this.steps.get()
 				, self = this;

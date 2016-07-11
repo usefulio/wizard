@@ -81,6 +81,9 @@ Wizard.mixin = function(template){
 						self.currentIndex.set(targetIndex);
 						self.percentComplete.set( (targetIndex / steps.length) * 100 );
 						self.setClasses();
+						if(_.isFunction(self.afterMove)){
+							self.afterMove();
+						}
 					}
 				}
 

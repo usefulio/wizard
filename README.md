@@ -111,6 +111,20 @@ If you pass anything to the `move` callback, it will be interpreted as an error
 and the move will be disallowed. To call move directly and allow the move, just
 call `move()` passing nothing.
 
+### `templateInstance.afterMove()`
+
+Callback to run code after a transition has been completed.
+
+``` javascript
+Wizard.mixin(Template.NewOrder);
+
+Template.NewOrder.onCreated(function(){
+	this.afterMove = function(){
+		// do something
+	};
+});
+```
+
 
 ### `templateInstance.activeClass` and `templateInstance.inactiveClass` and `templateInstance.completedClass`
 
